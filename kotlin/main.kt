@@ -2,28 +2,33 @@ import java.util.Scanner
 
 fun main(){
     val scan = Scanner(System.`in`)
-    var complete:Int = 0 // Полное совпадение
-    var partial:Int = 0 // Частичное совпадение
+    var complete:Int// Полное совпадение
+    var partial:Int// Частичное совпадение
     var attempts:Int = 0 // Попытки
     var coincidences:Int = 0 //Совпадения
 
 
     var randomNum = (1..9).random()
     println("Num ->" + randomNum)
-    var randomX:Int
-
-
+    var randomX:Int = (1..9).random()
+    var randomY:Int = (1..9).random()
+    var randomZ:Int = (1..9).random()
+    var x:Int = 1
+    var y:Int = randomNum
     var numberString:String = "" + randomNum
-
+    println("Длина на старте -> " + numberString.length)
     while (numberString.length < 4) {
-        randomNum = (1..9).random()
-        randomX = randomNum
-        println("Num 2 ->" + randomNum)
 
+        var x = numberString.length
 
-         if (randomNum != randomX ) numberString += randomNum
-         else numberString += (1..9).random()
-         println("X 2 ->" + randomNum)
+        if ((randomX != y) && (randomNum != randomX) && (randomX != randomY) && (randomX != randomZ)) numberString += randomX
+
+        if (numberString.length != x) randomNum = randomX
+
+        randomX = (1..9).random()
+        randomY = (1..9).random()
+        randomZ = (1..9).random()
+
     }
     println(numberString)
 
