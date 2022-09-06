@@ -54,7 +54,7 @@ fun main(){
         if ((numberUserStr[3] == numberUserStr[0]) || (numberUserStr[3] == numberUserStr[1]) || (numberUserStr[3] == numberUserStr[2])) partial--
         if (partial < 0) partial = 0
 
-        attempts++
+        attempts++ // Увеличили кол-во попыток
 
         if (complete == 4) {
             println("Вы выйграли! Колличество ваших попыток: $attempts Правильно число $numberString")
@@ -64,4 +64,5 @@ fun main(){
         println("Колличество полных совпадений: $complete, частичных совпадений: $partial " +
                 "\nКолличество попыток: $attempts")
     }
+    // В будущем нужно сделать вопрос о подсказках, допустим каждые 5+ попыток, а также вынести большие строчки кода в отдельные функции
 }
