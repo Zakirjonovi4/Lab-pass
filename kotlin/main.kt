@@ -4,17 +4,17 @@ fun main(){
     val scan = Scanner(System.`in`)
     var complete:Int// Полное совпадение
     var partial:Int// Частичное совпадение
-    var attempts:Int = 0 // Попытки
+    var attempts = 0 // Попытки
 
     var randomNum = (1..9).random()
     var randomX:Int = (1..9).random()
     var randomY:Int = (1..9).random()
     var randomZ:Int = (1..9).random()
-    var y:Int = randomNum
+    val y:Int = randomNum
     var numberString:String = "" + randomNum
 
     while (numberString.length < 4) {
-        var x = numberString.length
+        val x = numberString.length
         if ((randomX != y) && (randomNum != randomX) && (randomX != randomY) && (randomX != randomZ)) numberString += randomX
         if (numberString.length != x) randomNum = randomX
         randomX = (1..9).random()
@@ -26,7 +26,7 @@ fun main(){
 
     println("Попробуйте разгадать четырехзначное число")
 
-    var numberUser:Int = 0
+    var numberUser = 0
     var numberUserStr:String
 
     while (numberUser != randomNum){
