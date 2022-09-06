@@ -5,38 +5,30 @@ fun main(){
     var complete:Int// Полное совпадение
     var partial:Int// Частичное совпадение
     var attempts:Int = 0 // Попытки
-    var coincidences:Int = 0 //Совпадения
-
 
     var randomNum = (1..9).random()
-    println("Num ->" + randomNum)
     var randomX:Int = (1..9).random()
     var randomY:Int = (1..9).random()
     var randomZ:Int = (1..9).random()
-    var x:Int = 1
     var y:Int = randomNum
     var numberString:String = "" + randomNum
-    println("Длина на старте -> " + numberString.length)
+
     while (numberString.length < 4) {
-
         var x = numberString.length
-
         if ((randomX != y) && (randomNum != randomX) && (randomX != randomY) && (randomX != randomZ)) numberString += randomX
-
         if (numberString.length != x) randomNum = randomX
-
         randomX = (1..9).random()
         randomY = (1..9).random()
         randomZ = (1..9).random()
-
     }
-    println(numberString)
+
+    println(numberString) //Это нужно закоментить чтоб разгадывать
 
     println("Попробуйте разгадать четырехзначное число")
-//    println("Введите первую попытку: ")
+
     var numberUser:Int = 0
     var numberUserStr:String
-    //println(randomNum)
+
     while (numberUser != randomNum){
         complete = 0
         partial = 0
@@ -45,8 +37,7 @@ fun main(){
         numberUserStr = numberUser.toString()
         if (numberUser <= 999) return // Пока числа только от 1000 до 9999, позже сделать от 0000
 
-       /* Проверяем полные совпадения, с неполными еще есть проблемы*/
-
+       /* Проверяем полные совпадения*/
         if (numberUserStr[0] == numberString[0]) complete++
             else if((numberUserStr[0] == numberString[1]) || (numberUserStr[0] == numberString[2]) || (numberUserStr[0] == numberString[3])) partial++
         if (numberUserStr[1] == numberString[1]) complete++
@@ -56,15 +47,21 @@ fun main(){
         if (numberUserStr[3] == numberString[3]) complete++
             else if((numberUserStr[3] == numberString[0]) || (numberUserStr[3] == numberString[1]) || (numberUserStr[3] == numberString[2])) partial++
 
+        /* Проверяем частичные совпадения*/
         if ((numberUserStr[0] == numberUserStr[1]) || (numberUserStr[0] == numberUserStr[2]) || (numberUserStr[0] == numberUserStr[3])) partial--
         if ((numberUserStr[1] == numberUserStr[0]) || (numberUserStr[1] == numberUserStr[2]) || (numberUserStr[1] == numberUserStr[3])) partial--
         if ((numberUserStr[2] == numberUserStr[0]) || (numberUserStr[2] == numberUserStr[1]) || (numberUserStr[2] == numberUserStr[3])) partial--
         if ((numberUserStr[3] == numberUserStr[0]) || (numberUserStr[3] == numberUserStr[1]) || (numberUserStr[3] == numberUserStr[2])) partial--
         if (partial < 0) partial = 0
 
+        attempts++
+
+        if (complete == 4) {
+            println("Вы выйграли! Колличество ваших попыток: $attempts Правильно число $numberString")
+            break
+        }
 
         println("Колличество полных совпадений: $complete, частичных совпадений: $partial " +
-                "\nP.S. Частичные совпадения пока могут отображаться неверно =(")
+                "\nКолличество попыток: $attempts")
     }
-    println("Вы выйграли! Правильно число $randomNum")
 }
