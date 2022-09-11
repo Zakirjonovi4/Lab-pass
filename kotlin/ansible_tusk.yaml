@@ -1,0 +1,10 @@
+- name: "first setting"
+  hosts: "group2"
+  tasks:
+    - name: "install nginx"
+      ansible.builtin.apt:
+        name: "nginx"
+        state: "latest"
+        update_cache: true
+
+
